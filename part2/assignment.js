@@ -171,11 +171,18 @@ function mean(arr) {
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
-// function median(arr) {
-//   var sortedArr = arr.sort();
-//   console.log(sortedArr);
-//
-// }
+function median(arr) {
+  var sortedArr = arr.sort(function(a, b){return a - b});
+  console.log(sortedArr);
+  var arrLength = arr.length
+  if (arrLength === 0) {
+    return null;
+  } else if (arr.length % 2 !== 0) {
+    return sortedArr[Math.floor(arrLength/2)];
+  } else {
+    return (sortedArr[arrLength/2] + sortedArr[(arrLength/2)-1])/2;
+  }
+}
 
 
 
@@ -223,7 +230,18 @@ function distance(point1, point2) {
 // If there's a key in more than one object,
 // the latest object to have the key will determine the value. For example,
 // given {c: 3} and {c: 4}, then return {c: 4}.
-
+function combine(obj1, obj2) {
+  var obj3 = {};
+  for (var key in obj1) {
+    obj3[key] = obj1[key];
+    console.log(obj3);
+  }
+  for (var key in obj2) {
+    obj3[key] = obj2[key];
+    console.log(obj3);
+  }
+  return obj3;
+}
 
 
 // Define a function called invert that takes in one argument.
@@ -231,7 +249,18 @@ function distance(point1, point2) {
 //
 // Return a new object where the keys and values of the argument are inverted.
 // For example, given { a: 1, b: 2 }, then return { '1': 'a', '2': 'b' }.
-
+function invert(obj) {
+  var keysForSwitch = Object.keys(obj);
+  var propsForSwitch = [];
+  var newObj = {};
+  for (var i = 0; i < keysForSwitch.length; i++) {
+    propsForSwitch.push(obj[keysForSwitch[i]]);
+  }
+  for (var j = 0; j < keysForSwitch.length; j++) {
+    newObj[propsForSwitch[j]] = keysForSwitch[j];
+  }
+  return newObj;
+}
 
 
 
@@ -240,7 +269,9 @@ function distance(point1, point2) {
 //
 // Return an array of the values of the object. For example, given
 // { a: 1, b: 2, c: 3 }, then return [1, 2, 3].
-
+function values(obj) {
+  return Object.values(obj);
+}
 
 
 
@@ -250,7 +281,9 @@ function distance(point1, point2) {
 // Return a new array where each element is key-value pair array of the
 // argument. For example, given { a: 1, b: 2 }, then return
 // [['a', 1], ['b', 2]].
-
+function toPairs(obj) {
+ return Object.entries(obj);
+}
 
 
 
@@ -260,3 +293,18 @@ function distance(point1, point2) {
 // Return a new object where each key-value pair is from an element in the
 // argument. For example, given [['a', 1], ['b', 2]], then return
 // { a: 1, b: 2 }.
+function fromPairs(arr) {
+  var keyPairs = [];
+  var valPairs = [];
+  var newObj = {};
+  for (var i = 0; i < arr.length; i++) {
+    keyPairs.push(arr[i][0]);
+  }
+  for (var j = 0; j < arr.length; j++) {
+    valPairs.push(arr[j][1]);
+  }
+  for (var h = 0; h < arr.length; h++) {
+    newObj[keyPairs[h]] = valPairs[h];
+  }
+  return newObj;
+}
