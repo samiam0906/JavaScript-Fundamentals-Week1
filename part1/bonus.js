@@ -71,7 +71,13 @@ function caesarShiftInt(integer) {
 // 'Hello, there!', then return 'uryyb, gurer!'.
 //
 // HINT: You'll need a loop for this.
-
+// function encodeMessage(message) {
+//   var encodedArr = [];
+//   for (var i = 0; i < message.length; i++) {
+//
+//   }
+//
+// }
 
 
 
